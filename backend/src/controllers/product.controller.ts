@@ -8,10 +8,8 @@ export const createProduct = async (req: Request, res: Response) => {
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
-    const userId = (req as any).user?._id; // 👈 Simple fix here
-
     const { category, minPrice, maxPrice, rating, search } = req.query;
-    const filter: any = { user: userId }; // 👈 Only fetch logged-in user's products
+    const filter: any = {};
 
     if (category) filter.category = category;
     if (rating) filter.rating = { $gte: Number(rating) };
@@ -27,14 +25,13 @@ export const getProducts = async (req: Request, res: Response) => {
       ];
     }
 
-    const products = await Product.find(filter);
+    const products = await Product.find(filter); // If filter = {}, it returns all
     res.status(200).json(products);
   } catch (err) {
     console.error('Error fetching products:', err);
     res.status(500).json({ message: 'Server Error' });
   }
 };
-
 
 export const updateProduct = async (req: Request, res: Response) => {
   const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
