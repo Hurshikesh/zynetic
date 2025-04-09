@@ -1,7 +1,7 @@
 Product Management Web App
 A full-stack web application for managing products, built with React (TypeScript) on the frontend and Node.js + Express + MongoDB on the backend.
 
-📦 Tech Stack
+ Tech Stack
 Frontend: React + TypeScript + bootstrap
 
 Backend: Node.js + Express + TypeScript + MongoDB
@@ -22,7 +22,7 @@ Frontend will run at: http://localhost:5173
 
 4. Backend Setup
 cd backend
-✅ Create a .env file and add your MongoDB connection URL:
+ Create a .env file and add your MongoDB connection URL:
 
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
@@ -33,7 +33,7 @@ npx tsc
 node dist/server.js
 Backend will run at: http://localhost:5000
 
-✅ Features
+ Features
 User signup/login with JWT
 
 Add, update, delete, and list products
